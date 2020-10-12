@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/wavesurfer.js"></script>
+        <script type="text/javascript">
+            function onDocumentReady() {
+                var wavesurfer = WaveSurfer.create({
+                    container: '#waveform'
+                });
+
+                wavesurfer.on('ready', function () {
+                    wavesurfer.play();
+                });
+
+                fetch("http://localhost:8080/?url=https%3A%2F%2Ffile-examples-com.github.io%2Fuploads%2F2017%2F11%2Ffile_example_MP3_5MG.mp3")
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("HTTP error " + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(peaks => {
+                        console.log('loaded peaks! sample_rate: ' + peaks.sample_rate);
+                        // load peaks into wavesurfer.js
+                        wavesurfer.load("https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3", peaks.data);
+                    })
+                    .catch((e) => {
+                        console.error('error', e);
+                    });
+            }
+        </script>
+    </head>
+    <body onload="onDocumentReady()">
+        <div>
+            <div id="waveform"></div>
+        </div>
+    </body>
+</html>

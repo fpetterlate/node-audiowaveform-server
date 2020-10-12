@@ -1,0 +1,26 @@
+{
+  "name": "audiowaveform-server",
+  "version": "1.0.0",
+  "description": "Nodejs server for generating waveform input data to Wavesurfer",
+  "main": "audiowaveform-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-server": "nodemon ./audiowaveform-server.js"
+  },
+  "keywords": [
+    "wavesurfer, audiowaveform, audio, nodejs, docker"
+  ],
+  "author": "Fredrik Pettersen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fredrikwithpettersen/node-audiowaveform-server"
+  },
+  "dependencies": {
+    "multipart-download": "1.2.4",
+    "os": "0.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.4"
+  }
+}
